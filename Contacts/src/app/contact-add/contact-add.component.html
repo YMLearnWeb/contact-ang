@@ -1,0 +1,13 @@
+<div class="add-form">
+  <form id="addContact">
+    <div>
+      <span>Name:</span><input type="text" name="contactName" [(ngModel)]="contactName">
+    </div>
+    <div>
+      <span>tel:</span><input type="tel" name="contactTel" [(ngModel)]="contactTel">
+    </div>
+    <div class="form-control">
+      <input type="button" value="Add" (click)="addContact()"/>
+    </div>
+  </form>
+</div>
