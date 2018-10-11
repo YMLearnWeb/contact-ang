@@ -1,20 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Contact } from './contact';
-import { Contacts } from './mock-contacts';
+
 import { Observable, of} from 'rxjs';
-import { COMPONENT_FACTORY_RESOLVER } from '@angular/core/src/render3/ng_module_ref';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
 })     
 export class ContactsService {
 
-  constructor() { }
-  getContact(): Contact[] {
-    return Contacts;
+  private contactUrl = "api/returnContacts"; // api/ must user the return value in data
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getContact(): Observable<Contact[]> {
+    return this.http.get<Contact[]>(this.contactUrl)
   }
 
-  addContact(c){
-    Contacts.push(c);
+  addContact(c:Contact): Observable<Contact> {
+    return this.http.post<Contact>(this.contactUrl,c,httpOptions)   
   }
  }

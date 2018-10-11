@@ -11,7 +11,9 @@ export class ContactListComponent implements OnInit {
   constructor(private _contactService: ContactsService) { }
   contacts = [];
   ngOnInit() {
-    this.contacts = this._contactService.getContact();
+     this._contactService.getContact().subscribe(c => this.contacts = c);
   }
-
+  linkAdd() {
+    location.href="./addContact";
+  }
 }

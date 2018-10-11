@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { FormControl } from '@angular/forms';
+import { Contact } from "../contact"; 
 
 @Component({
   selector: 'app-contact-add',
@@ -8,19 +9,18 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./contact-add.component.css']
 })
 export class ContactAddComponent implements OnInit {
-
   constructor(private _contactService: ContactsService) { }
 
   ngOnInit() {
-    
   }
   contactName ="";
   contactTel = null;
+
   addContact(){
     let c= {
       name: this.contactName,
       tel: this.contactTel,
     }
-    this._contactService.addContact(c);
+    this._contactService.addContact(c as Contact).subscribe();
   }
 }
