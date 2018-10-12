@@ -25,7 +25,22 @@ export class ContactsService {
     return this.http.get<Contact[]>(this.contactUrl)
   }
 
+  getPerContact(id:number): Observable<Contact> {
+    const url = `${this.contactUrl}/${id}`;
+    return this.http.get<Contact>(url);
+  }
+
   addContact(c:Contact): Observable<Contact> {
     return this.http.post<Contact>(this.contactUrl,c,httpOptions)   
   }
+
+  updateContact(c: Contact): Observable<Contact> {
+    return this.http.put<Contact>(this.contactUrl,c, httpOptions)
+  }
+
+  deleteContact(id:number): Observable<Contact> {
+    const url = `${this.contactUrl}/${id}`;
+    return this.http.delete<Contact>(url,httpOptions) 
+  }
+
  }

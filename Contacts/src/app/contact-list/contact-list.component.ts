@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../contacts.service';
+import { Contact } from '../contact';
 
 @Component({
   selector: 'app-contact-list',
@@ -9,11 +10,13 @@ import { ContactsService } from '../contacts.service';
 export class ContactListComponent implements OnInit {
 
   constructor(private _contactService: ContactsService) { }
-  contacts = [];
+  contacts: Contact[];
   ngOnInit() {
      this._contactService.getContact().subscribe(c => this.contacts = c);
   }
-  linkAdd() {
-    location.href="./addContact";
+  deleteContact(c){
+    this._contactService.deleteContact(c.id).subscribe(t=>
+      this.contacts = this.contacts.filter(h=>h !== c)
+    )
   }
 }

@@ -1,0 +1,15 @@
+<div class="update-form" *ngIf="ct">
+  <form id="updateContact">
+    <div>
+      <span>Name:</span><input type="text" name="contactName" [(ngModel)]="ct.name">
+    </div>
+    <div>
+      <span>tel:</span><input type="tel" name="contactTel" [(ngModel)]="ct.tel">
+    </div>
+    <div class="form-control">
+      <input type="button" value="Update" (click)="updateContact()"/>
+    </div>
+  </form>
+</div>
+
+<a routerLink="/contacts">Return</a>

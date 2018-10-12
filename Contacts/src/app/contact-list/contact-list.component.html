@@ -1,9 +1,11 @@
 <div class="controls">
-    <button id="addBtn" class="btn primary add" (click)="linkAdd()">Add</button>
+    <a routerLink = "/addContact">Add</a>
 </div>
 <ul class="contact-list">
   <li class="per-contact" *ngFor="let c of contacts">
     <div class="per-contact per-name">Name: {{c.name}}</div>
     <div class="per-contact per-tel">Tel: {{c.tel}}</div>
+    <a routerLink = "/updateContact/{{c.id}}">Edit</a>
+    <button (click)="deleteContact(c)">Del</button>
   </li>
 </ul>

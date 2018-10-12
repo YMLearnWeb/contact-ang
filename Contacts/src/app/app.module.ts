@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryContactService } from './mock-contacts';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactUpdateComponent } from './contact-update/contact-update.component';
+
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ContactAddComponent,
     ContactListComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContactUpdateComponent,
   ],
   imports: [
     BrowserModule,
